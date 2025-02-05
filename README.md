@@ -1,3 +1,23 @@
+To init Prisma:
+1) Install ```npm i prisma```
+2) Type in terminal ```npx prisma init --datasource-provider %db_name%``` without %
+3) After that 'prisma' folder should appear at the root folder of a project, with 'schema.prisma' file in it.
+That's a db models, like entities in NestJS.
+4) To create db migrations type in terminal ```npx prisma migrate dev```
+5) Create 'db' folder in 'src' directory with a file index.ts that'll be a provider for db.
+6) Inside create an instance of PrismaClient.
+```javascript
+import {PrismaClient} from "@prisma/client";
+
+export const db = new PrismaClient();
+```
+
+Next steps:
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Run prisma db pull to turn your database schema into a Prisma schema.
+3. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+4. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and real-time database events. Read: https://pris.ly/cli/beyond-orm
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
