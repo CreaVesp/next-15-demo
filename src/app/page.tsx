@@ -16,7 +16,8 @@ export default async function Home() {
             </form>
 
             {
-                session?.user ? <div>Signed In as {JSON.stringify(session.user.name)}</div> : <div>Signed Out</div>
+                session?.user ? <div>Signed In as {JSON.stringify(session.user.name)}</div> :
+                    <div>Signed Out</div>
             }
             <Profile/>
         </div>

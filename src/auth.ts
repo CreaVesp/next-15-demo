@@ -20,7 +20,7 @@ export const {handlers: {GET, POST}, auth, signOut, signIn} = NextAuth({
     ],
     callbacks: {
         // if there is a bug with the session, this will fix it
-        async session({session, user}: any) {
+        async session({session, user}) {
             if (session && user && (!session?.user?.id || session?.user?.id !== user?.id)) {
                 session.user.id = user.id
             }
