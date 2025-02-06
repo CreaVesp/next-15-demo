@@ -1,11 +1,22 @@
-'use client';
+import * as actions from "@/actions";
+import {auth} from "@/auth";
+import {Button} from "@heroui/button";
 
-import {Button} from "@heroui/react";
+export default async function Home() {
+    const session = await auth()
 
-export default function Home() {
-  return (
-      <div>
-        <Button>Click me</Button>
-      </div>
-  );
+    return (
+        <div>
+            <form action={actions.signIn}>
+                <Button type={'submit'}>Sign In</Button>
+            </form>
+            <form action={actions.signOut}>
+                <Button type={'submit'}>Sign Out</Button>
+            </form>
+
+            {
+                session?.user ? <div>Signed In</div> : <div>Signed Out</div>
+            }
+        </div>
+    );
 }
