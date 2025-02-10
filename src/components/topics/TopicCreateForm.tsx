@@ -7,9 +7,10 @@ import {Input} from "@heroui/input";
 import {Button} from "@heroui/button";
 import {Textarea} from "@heroui/input";
 import {Popover, PopoverTrigger, PopoverContent} from "@heroui/popover";
+import FormButton from "@/components/common/FormButton";
 
 export default function TopicCreateForm() {
-    const [formState, action] = useActionState(createTopic, {errors: {}})
+    const [formState, action, isPending] = useActionState(createTopic, {errors: {}})
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -41,12 +42,16 @@ export default function TopicCreateForm() {
                         isInvalid={!!formState.errors?.description}
                         errorMessage={formState.errors?.description?.join('. ')}
                     />
-                    {formState.errors?._form
+
+                    {
+                        formState.errors?._form
                         ? <div className={'p-2 bg-red-200 border border-red-400 rounded-xl'}>
                             {formState.errors?._form?.join('. ')}
                         </div>
-                        : null}
-                    <Button type={'submit'} color={'primary'}>Submit</Button>
+                        : null
+                    }
+
+                    <FormButton isLoading={isPending}>Save</FormButton>
                 </div>
             </Form>
         </PopoverContent>
