@@ -1,4 +1,5 @@
 import type {Metadata} from "next";
+import PostCreateForm from "@/components/posts/PostCreateForm";
 
 export const metadata: Metadata = {
     title: "Topic page",
@@ -19,6 +20,8 @@ export default async function TopicShowPage({params}: TopicShowPageProps) {
                 {slug}
             </h1>
         </div>
-        <div></div>
+        <div>
+            <PostCreateForm slug={slug}/>
+        </div>
     </div>
 }
