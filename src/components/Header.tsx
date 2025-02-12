@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem} from '@heroui/navbar';
-import {Input} from "@heroui/input";
 import HeaderAuth from "@/components/HeaderAuth";
+import SearchInput from "@/components/SearchInput";
+import {Suspense} from "react";
 
 export default async function Header() {
+
+    // If some of the child components use searchParams hook,
+    // it must be wrapped in <Suspense/>. Otherwise, page won't build.
 
     return <Navbar className={'shadow mb-6'}>
         <NavbarBrand>
@@ -11,7 +15,9 @@ export default async function Header() {
         </NavbarBrand>
         <NavbarContent justify={'center'}>
             <NavbarItem>
-                <Input />
+                <Suspense>
+                    <SearchInput />
+                </Suspense>
             </NavbarItem>
         </NavbarContent>
         <NavbarContent justify={'end'}>
