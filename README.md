@@ -20,6 +20,22 @@ Next steps:
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+
+## Special filenames
+Next special filenames in app folder:
+
+**page.tsx** - primary content of the page
+
+**layout.tsx** - wraps up the currently displayed page. Used to show content common across many pages
+
+**not-found.tsx** - displayed when we call the notFound function inside the component
+
+**loading.tsx** - displayed when server component is fetching data
+
+**error.tsx** - displayed when error occurs in a server component
+
+**route.tsx** - defines API endpoints
+
 ## Getting Started
 
 First, run the development server:
