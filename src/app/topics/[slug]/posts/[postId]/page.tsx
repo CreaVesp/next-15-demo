@@ -5,6 +5,8 @@ import CommentList from "@/components/comments/CommentList";
 import CommentCreateForm from "@/components/comments/CommentCreateForm";
 import paths from "@/paths";
 import type {Metadata} from "next";
+import {Suspense} from "react";
+import PostShowLoading from "@/components/posts/PostShowLoading";
 // import CommentListWithMultiQuery from "@/components/comments/CommentListWithMultiQuery";
 
 export const metadata: Metadata = {
@@ -28,7 +30,9 @@ export default async function PostShowPage({params}: PostShowPageProps) {
             <Link className="underline decoration-solid" href={paths.topicShow(slug)}>
                 {"< "}Back to {slug}
             </Link>
-            <PostShow postId={postId}/>
+            <Suspense fallback={<PostShowLoading />}>
+                <PostShow postId={postId}/>
+            </Suspense>
             <CommentCreateForm postId={postId} startOpen/>
             <CommentList fetchData={() => fetchCommentsByPostId(postId)}/>
             {/*<CommentListWithMultiQuery postId={postId}/>*/}
